@@ -13,5 +13,15 @@
     "id": 3,
     "name": "Chips",
     "price": 1.25
+  },
+  {
+    "id": 4,
+    "name": "Milk",
+    "price": 3.00
+  },
+  {
+    "id": 5,
+    "name": "Soap",
+    "price": 1.10
   }
 ]
