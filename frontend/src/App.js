@@ -1,28 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import { ProductTable } from './components';
 import './App.css';
 
+
 const App = () => {
-  const [clickTimes, setClickTimes] = useState(0);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(null);
+
+  const getProducts = () => {
+    fetch('http://localhost:3000/products')
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.length > 0) {
+          setProducts(data);
+        }
+      });
+  };
+
+  const clickTimesReducer = (previousClickTimes, increase = true) => {
+    if (increase) {
+      if (!products) {
+        getProducts();
+      }
+      return previousClickTimes + 1;
+    }
+    setProducts(null);
+    return 0;
+  };
+
+  const [clickTimes, increaseClickTimes] = useReducer(clickTimesReducer, 0);
 
   useEffect(() => {
     // Update the document title using the browser API
     document.title = `Clicked ${clickTimes} times`;
-  });
-
-  const getProducts = () => {
-    fetch('http://localhost:3000/products').then(response => response.json()).then(data => {
-      if (data && data.length > 0) {
-        setProducts(data);
-      }
-    });
-  };
-
-  const clickHandler = () => {
-    getProducts();
-    setClickTimes(clickTimes + 1);
-  };
+  }, [clickTimes]);
 
   return (
     <div className="App">
@@ -32,13 +42,18 @@ const App = () => {
         </p>
       </header>
       <p>
-        <button onClick={clickHandler}>
-          Click me
+        <button onClick={increaseClickTimes}>
+          Load
+        </button>
+        <button onClick={() => increaseClickTimes(false)} className="margin-left-medium">
+          Reset
         </button>
       </p>
-      <div className="margin-left-medium">
-        <ProductTable products={products}></ProductTable>
-      </div>
+      {products && (
+        <div className="margin-left-medium">
+          <ProductTable products={products} />
+        </div>
+      )}
     </div>
   );
 };
