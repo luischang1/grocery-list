@@ -1,0 +1,20 @@
+.product-table {
+  border: 1px solid gray;
+  border-spacing: 0;
+}
+
+.product-table th {
+  font-weight: bold;
+  border-bottom: 1px solid gray;
+  padding: 10px;
+}
+
+.product-table-cell-number {
+  text-align: right;
+  padding: 10px 15px;
+}
+
+.product-table-cell-text {
+  text-align: left;
+  padding: 10px 15px;
+}

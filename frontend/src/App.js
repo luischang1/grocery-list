@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ProductTable } from './components';
 import './App.css';
 
 const App = () => {
@@ -27,30 +28,17 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code id="code">src/App.js</code> and save to reload.
         </p>
+      </header>
+      <p>
         <button onClick={clickHandler}>
           Click me
         </button>
-        <table>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map(p => (
-              <tr key={`product${p.id}`}>
-                <td>{p.id}</td>
-                <td>{p.name}</td>
-                <td>{p.price}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </header>
+      </p>
+      <div className="margin-left-medium">
+        <ProductTable products={products}></ProductTable>
+      </div>
     </div>
   );
 };
