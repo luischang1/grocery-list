@@ -29,6 +29,12 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `serve -s build`
+
+Runs the app in production mode on port 5000 after it was built.
+
+To publish it, go to [netlify](https://www.netlify.com) and drag & drop the build folder.
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**

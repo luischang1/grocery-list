@@ -14,9 +14,14 @@
 }
 
 #code {
-  color: red;
+  color: green;
 }
 
 .margin-left-medium {
   margin-left: 20px;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
 }
