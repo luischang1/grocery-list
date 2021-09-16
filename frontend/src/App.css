@@ -21,6 +21,10 @@
   margin-left: 20px;
 }
 
+.products-table {
+  display: inline-flex;
+}
+
 .error-message {
   color: red;
   font-weight: bold;

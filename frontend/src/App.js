@@ -73,7 +73,7 @@ const App = () => {
         </p>
       )}
       {products && (
-        <div className="margin-left-medium">
+        <div className="products-table">
           <ProductTable products={products} />
         </div>
       )}
